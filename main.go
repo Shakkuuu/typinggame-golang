@@ -12,5 +12,6 @@ func main() {
 		fmt.Println(err)
 	}
 
-	typinggame.Typing()
+	time_limit := 20
+	typinggame.Typing(time_limit)
 }
