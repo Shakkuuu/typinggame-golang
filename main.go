@@ -1,17 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func main() {
+	var words []string
+	t, err := os.Open("./words.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer t.Close()
+	scanner := bufio.NewScanner(t)
+	for scanner.Scan() {
+		words = append(words, scanner.Text())
+	}
+
 	var w string
-	word := "あいうえお"
-	for {
-		fmt.Print(word)
+	var point int
+	for point < len(words) {
+		wo := words[point]
+		fmt.Print(wo)
 		fmt.Print(">")
 		fmt.Scan(&w)
-		if word == w {
+		if wo == w {
 			fmt.Println("OK")
-			break
+			point++
 		}
 	}
 }
