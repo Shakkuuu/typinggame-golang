@@ -1,33 +1,15 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+
+	"github.com/Shakkuuu/typinggame-golang/typinggame"
 )
 
 func main() {
-	var words []string
-	t, err := os.Open("./words.txt")
-	if err != nil {
+	if err := typinggame.FileLoad(); err != nil {
 		fmt.Println(err)
 	}
-	defer t.Close()
-	scanner := bufio.NewScanner(t)
-	for scanner.Scan() {
-		words = append(words, scanner.Text())
-	}
 
-	var w string
-	var point int
-	for point < len(words) {
-		wo := words[point]
-		fmt.Print(wo)
-		fmt.Print(">")
-		fmt.Scan(&w)
-		if wo == w {
-			fmt.Println("OK")
-			point++
-		}
-	}
+	typinggame.Typing()
 }
