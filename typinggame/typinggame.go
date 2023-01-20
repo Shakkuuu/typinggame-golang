@@ -24,8 +24,8 @@ func Typing() {
 	}
 }
 
-func FileLoad() error {
-	t, err := os.Open("./words.txt")
+func FileLoad(filename string) error {
+	t, err := os.Open(filename)
 	if err != nil {
 		return err
 	}

@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	if err := typinggame.FileLoad(); err != nil {
+	filename := "words.txt"
+	if err := typinggame.FileLoad(filename); err != nil {
 		fmt.Println(err)
 	}
 
